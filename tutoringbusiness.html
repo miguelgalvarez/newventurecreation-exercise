@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TutorMatch — Find the right tutor this week</title>
+  <meta name="description" content="Get matched to a vetted Algebra II tutor in 24 hours. Flexible scheduling and secure payment for stress-free learning." />
+
+  <style>
+    :root{
+      --bg:#0f172a;         /* slate-900 */
+      --panel:#0b1229;      /* deeper slate */
+      --text:#e5e7eb;       /* gray-200 */
+      --muted:#a3a3a3;      /* gray-400 */
+      --brand:#2563eb;      /* blue-600 */
+      --brand-2:#7c3aed;    /* violet-600 */
+      --accent:#22c55e;     /* green-500 */
+      --danger:#ef4444;     /* red-500 */
+      --ring: rgba(37,99,235,.5);
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background: radial-gradient(1200px 600px at 20% -10%, rgba(124,58,237,.25), transparent), radial-gradient(1000px 500px at 80% 10%, rgba(37,99,235,.18), transparent), var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.5; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top:0; z-index: 30; backdrop-filter: blur(10px); background: linear-gradient(to bottom, rgba(15,23,42,.9), rgba(15,23,42,.4)); border-bottom: 1px solid rgba(148,163,184,.14); }
+    .nav { display:flex; align-items:center; justify-content: space-between; height: 64px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px; }
+    .badge { width:30px; height:30px; border-radius:8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); }
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(148,163,184,.18); background: rgba(255,255,255,.04); color: var(--text); cursor:pointer; transition: .2s ease; }
+    .btn:hover { background: rgba(255,255,255,.08); transform: translateY(-1px); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: none; color: white; box-shadow: 0 10px 24px rgba(37,99,235,.35), inset 0 1px 0 rgba(255,255,255,.15); }
+    .btn.primary:hover { filter: brightness(1.05); }
+    .hero { padding: 72px 0 36px; }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:32px; align-items:center; }
+    .tag { display:inline-flex; align-items:center; gap:8px; font-size:14px; color: #cbd5e1; background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.35); padding: 8px 12px; border-radius: 999px; }
+    .h1 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.05; margin: 16px 0 14px; letter-spacing: -.02em; }
+    .sub { font-size: clamp(16px, 2vw, 18px); color: var(--muted); max-width: 56ch; }
+    .cta { display:flex; flex-wrap: wrap; gap:12px; margin: 26px 0 10px; }
+    .micro { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+    .card { background: linear-gradient(180deg, rgba(2,6,23,.6), rgba(2,6,23,.3)); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .trust { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top: 18px; }
+    .trust .item { background: rgba(255,255,255,.03); border:1px solid rgba(148,163,184,.12); padding: 12px 14px; border-radius: 12px; font-size: 14px; color:#cbd5e1; }
+    .section { padding: 40px 0; }
+    .h2 { font-size: clamp(22px, 3vw, 28px); margin-bottom: 14px; }
+    .features { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+    .feature { padding:18px; background: rgba(255,255,255,.03); border:1px solid rgba(148,163,184,.12); border-radius: 12px; }
+    .feature h3 { margin: 0 0 6px; font-size: 18px; }
+    .steps { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+    .step { padding:18px; background: rgba(255,255,255,.03); border:1px solid rgba(148,163,184,.12); border-radius: 12px; }
+    .step .num { width:28px; height:28px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; background: linear-gradient(135deg, var(--brand), var(--brand-2)); font-weight:700; margin-bottom:10px; }
+    details { background: rgba(255,255,255,.03); border:1px solid rgba(148,163,184,.12); border-radius: 12px; padding: 14px 16px; }
+    details + details { margin-top: 10px; }
+    summary { cursor:pointer; font-weight:600; list-style: none; }
+    footer { padding: 34px 0 50px; color:#94a3b8; }
+    .footer-grid { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:16px; }
+    .legal { font-size: 12px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; padding: 8px 12px; border-radius: 999px; border:1px solid rgba(148,163,184,.18); color:#cbd5e1; }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .warning { color:#fecaca; font-size:12px; margin-top:8px; }
+    @media (max-width: 940px){
+      .hero-grid, .features, .steps, .trust, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+      header .nav { height: 58px; }
+    }
+    /* Focus styles */
+    .btn:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="Main">
+    <div class="container nav">
+      <div class="brand">
+        <div class="badge" aria-hidden="true"></div>
+        <span>TutorMatch</span>
+      </div>
+      <div class="nav-actions">
+        <a class="btn" href="#how">How it works</a>
+        <a class="btn" href="#faq">FAQ</a>
+        <a class="btn primary" href="#get-started">Get matched</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="tag">New pilot — limited spots</span>
+          <h1 class="h1">Find the right tutor this week</h1>
+          <p class="sub">Get matched to a vetted Algebra II tutor in 24 hours—flexible scheduling and secure payment for stress‑free learning.</p>
+          <div class="cta" id="get-started">
+            <!-- TODO: Replace the href values with actual Google Forms share links -->
+            <a class="btn primary" href="FORM_STUDENT_URL" rel="noopener">Get matched now</a>
+            <a class="btn" href="FORM_TUTOR_URL" rel="noopener">Tutors: join the pilot</a>
+          </div>
+          <div class="micro">No long-term contracts. Pay only after the first session is confirmed.</div>
+
+          <div class="trust">
+            <div class="item">Verified profiles</div>
+            <div class="item">Fast matching (24h)</div>
+            <div class="item">Secure checkout</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" role="region" aria-label="Quick form preview">
+            <h2 class="h2" style="margin-top:0;">What’s needed to start</h2>
+            <div class="grid-2">
+              <div>
+                <div class="pill">Subject & level</div>
+                <div class="pill">Availability</div>
+                <div class="pill">Budget range</div>
+              </div>
+              <div>
+                <div class="pill">Online / in‑person</div>
+                <div class="pill">Location (if in‑person)</div>
+                <div class="pill">Goals for week 1–2</div>
+              </div>
+            </div>
+            <div class="warning">This pilot is manually coordinated to ensure quality matching.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <h2 class="h2">Why TutorMatch</h2>
+        <div class="features">
+          <div class="feature">
+            <h3>Better fit, faster</h3>
+            <p>Share needs and receive 1–2 curated matches within 24 hours, not a generic list.</p>
+          </div>
+          <div class="feature">
+            <h3>Trust and clarity</h3>
+            <p>See experience, rate range, availability, and student level fit before committing.</p>
+          </div>
+          <div class="feature">
+            <h3>Simple scheduling</h3>
+            <p>Confirm a first session quickly with transparent pricing and flexible timing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <h2 class="h2">How it works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Tell us what’s needed</h3>
+            <p>Complete a 60‑second form with subject, level, schedule, and goals.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Get curated matches</h3>
+            <p>Receive 1–2 tutor profiles aligned to budget and availability.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Book first session</h3>
+            <p>Confirm details and pay securely once the match is accepted.</p>
+          </div>
+        </div>
+        <div class="cta" style="margin-top:18px">
+          <a class="btn primary" href="FORM_STUDENT_URL">Start student form</a>
+          <a class="btn" href="FORM_TUTOR_URL">Tutor sign‑up</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <h2 class="h2">FAQ</h2>
+        <details>
+          <summary>What subjects are supported?</summary>
+          <p>This pilot is focused on Algebra II to ensure fast, high‑quality matching during validation.</p>
+        </details>
+        <details>
+          <summary>How fast is matching?</summary>
+          <p>Most students receive 1–2 matches within 24 hours during the pilot period.</p>
+        </details>
+        <details>
+          <summary>How does payment work?</summary>
+          <p>Payment is processed after a match is accepted and a first session is scheduled.</p>
+        </details>
+        <details>
+          <summary>Online or in‑person?</summary>
+          <p>Either is possible; select the preference in the form and matches will reflect that.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="legal">© <span id="y"></span> TutorMatch • Pilot program</div>
+      <div style="display:flex; gap:10px;">
+        <a class="btn" href="#features">Features</a>
+        <a class="btn" href="#how">How it works</a>
+        <a class="btn primary" href="FORM_STUDENT_URL">Get matched</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+</body>
+</html>
