@@ -8,14 +8,14 @@
 
   <style>
     :root{
-      --bg:#0f172a;         /* slate-900 */
-      --panel:#0b1229;      /* deeper slate */
-      --text:#e5e7eb;       /* gray-200 */
-      --muted:#a3a3a3;      /* gray-400 */
-      --brand:#2563eb;      /* blue-600 */
-      --brand-2:#7c3aed;    /* violet-600 */
-      --accent:#22c55e;     /* green-500 */
-      --danger:#ef4444;     /* red-500 */
+      --bg:#0f172a;
+      --panel:#0b1229;
+      --text:#e5e7eb;
+      --muted:#a3a3a3;
+      --brand:#2563eb;
+      --brand-2:#7c3aed;
+      --accent:#22c55e;
+      --danger:#ef4444;
       --ring: rgba(37,99,235,.5);
       --shadow: 0 10px 30px rgba(0,0,0,.25);
       --radius: 14px;
@@ -40,7 +40,22 @@
     .tag { display:inline-flex; align-items:center; gap:8px; font-size:14px; color: #cbd5e1; background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.35); padding: 8px 12px; border-radius: 999px; }
     .h1 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.05; margin: 16px 0 14px; letter-spacing: -.02em; }
     .sub { font-size: clamp(16px, 2vw, 18px); color: var(--muted); max-width: 56ch; }
-    .cta { display:flex; flex-wrap: wrap; gap:12px; margin: 26px 0 10px; }
+    form.cta { display:flex; flex-wrap: wrap; gap:12px; margin: 26px 0 10px; max-width: 480px; }
+    form.cta input[type="email"] {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 16px;
+      color: var(--text);
+      background: rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+    form.cta input[type="email"]:focus {
+      outline: none;
+      background: rgba(255,255,255,0.2);
+    }
     .micro { font-size: 12px; color: #94a3b8; margin-top: 6px; }
     .card { background: linear-gradient(180deg, rgba(2,6,23,.6), rgba(2,6,23,.3)); border: 1px solid rgba(148,163,184,.15); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
     .trust { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; margin-top: 18px; }
@@ -66,6 +81,11 @@
       .hero-grid, .features, .steps, .trust, .grid-2 { grid-template-columns: 1fr; }
       .hero { padding-top: 38px; }
       header .nav { height: 58px; }
+      form.cta { flex-direction: column; }
+      form.cta input[type="email"], form.cta button {
+        flex: none;
+        width: 100%;
+      }
     }
     /* Focus styles */
     .btn:focus-visible, a:focus-visible, summary:focus-visible {
@@ -98,14 +118,10 @@
           <h1 class="h1">Find the right tutor this week</h1>
           <p class="sub">Get matched to a tutor in 24 hours, with flexible scheduling and secure payments for stress‑free learning.</p>
           <form class="cta" id="get-started" action="https://www.surveymonkey.com/r/FKMPTMR" method="get" target="_blank">
-            <input type="email" name="email" placeholder="Enter your email to get started" required>
+            <input type="email" name="email" placeholder="Enter your email to get started" required aria-label="Email address"/>
             <button type="submit" class="btn primary">Get matched now</button>
           </form>
           <div class="micro">No long-term contracts. Pay only after the first session is confirmed.</div>
-
-          <div class="trust">
-            <div class="item">Verified profiles</div>
-
           <div class="trust">
             <div class="item">Verified profiles</div>
             <div class="item">Fast matching (24h)</div>
